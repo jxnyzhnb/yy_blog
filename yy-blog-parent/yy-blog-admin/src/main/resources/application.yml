@@ -1,0 +1,46 @@
+server:
+  port: 8888
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/zh_blog?characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  servlet:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 5MB
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: community-consumer-group
+      enable-auto-commit: true
+      auto-commit-interval: 3000
+mybatis-plus:
+  configuration:
+    # 日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: delFlag
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      id-type: auto
+oss:
+  accessKey: iwNLY7vcLTXfI-BL95NCZT51tUbZpP5yDU8dP5i1
+  secretKey: bbi9QeHy4jsm4FhFAMmClYzSRGGydjIwHLR_1w45
+  bucket: yzyzr
+third:
+  github:
+    # 从github得到的客户端id
+    client_id: 95c777ecb7de85346c49
+    # 从github得到的客户端密钥
+    client_secret: 820b1b97765d51cddff08316bc408e948243268a
+    # 授权方式
+    grant_type: authorization_code
+    # 请求github获得资源后的回调地址
+    redirect_uri: http://localhost:8081/Login?login=1
+    # 请求github获得access_token地址
+    access_token_url: https://github.com/login/oauth/access_token
+    # 请求github获得用户信息的地址
+    user_info_url: https://api.github.com/user

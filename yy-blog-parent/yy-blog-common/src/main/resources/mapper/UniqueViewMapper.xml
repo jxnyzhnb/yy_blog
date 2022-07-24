@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yiyu.mapper.UniqueViewMapper">
+    <select id="getDaysUniqueCount" resultType="com.yiyu.entity.UniqueView" parameterType="map">
+        SELECT create_time , view_count
+        FROM `yy_unique_view`
+        WHERE create_time &gt;= #{startTime}
+          AND create_time &lt; #{endTime}
+        ORDER BY create_time
+    </select>
+</mapper>
